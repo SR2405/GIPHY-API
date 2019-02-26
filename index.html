@@ -113,7 +113,7 @@ button:hover:before,button:hover:after{
     </form>
     
 
-     <div id="gifs-appear-here">
+     <div class="gifs-appear-here">
 
   </div>
 
@@ -124,7 +124,7 @@ var designers=["Carl Lagerfeld", "Donatella Versace", "Oliver Rousting","Dolce &
 
     function displaydesignerInfo() {
       var designer = $(this).attr("data-name");
- var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         designer + "&api_key=D9hobdIX1BT7ooUCSodLMMSyQN1TCiv0&limit=10";
 
 
@@ -134,22 +134,28 @@ var designers=["Carl Lagerfeld", "Donatella Versace", "Oliver Rousting","Dolce &
       }) .then(function(response) {
         console.log(response);
 
-//         console.log(queryURL);
+        const imgData = response.data;
+
+        for (var i = 0; i < imgData.length; i++) {
+          //         console.log(queryURL);
         //crating div to hold designer
-        var designerDiv = $("<div class='designer'>");
+          var designerDiv = $('<div class="designer">');
 
-        //store response data
-          var rating = response.data.rating;
+          //store response data
+          var rating = imgData[i].rating;
 
-          //create element to have rating displayed
-        var p = $("<p>").text("Rating:" + rating);
+            //create element to have rating displayed
+          var p = $("<p>").text("Rating:" + rating);
 
-        designerDiv.append(p);
+          designerDiv.append(p);
 
-        var imageUrl = response.data.images.fixed_height.url;
-        var image =$("<img>").attr("src", imageUrl);
+          var imageUrl = imgData[i].images.fixed_height.url;
+          var image =$("<img>").attr("src", imageUrl);
 
-          $('#gifs-appear-here').prepend(designerDiv);
+          designerDiv.append(image);
+
+            $('.gifs-appear-here').append(designerDiv);
+        }
 
           console.log(response);
 

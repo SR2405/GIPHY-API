@@ -3,30 +3,113 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Fashion Designer</title>
+  <title>Fashion Designers</title>
 </head>
 
 <style type="text/css">
-  button,
+
+  button{
+  background:rgb(228, 194, 231);
+  color:#fff;
+  border:none;
+  position:relative;
+  height:30px;
+  font-size:1em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  margin: 5px;
+  align-items: center;
+
+}
+button:hover{
+  background:#fff;
+  color:rgb(148, 223, 205);
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: rgb(149, 236, 216);
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
   div,
   form,
   input {
     margin: 10px;
   }
+  h1{
+    text-align: center;
+    color:rgb(228, 125, 142);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 3em;
+  }
+
+  .search{
+    position: relative;
+   margin-left:60%;
+  }
+
+  .search-field{
+    position: relative;
+   margin-left:60%;
+   border-width: 5px;
+
+  }
+
+  
+  #add-designer{
+    background:rgb(228, 194, 231);
+  color:#fff;
+  border:none;
+  position:relative;
+  height:30px;
+  font-size:1em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  }
+
+  label{
+    font-size:1em;
+  padding:0 2em;
+  
+  }
+
+  .buttons-view{
+    text-align: center;
+  }
+
 </style>
 
 </head>
 <body>
 <div class="container">
-    <h1>Fashion Designer</h1>
+    <h1>Fashion Designers</h1>
     
     <div id="buttons-view"></div>
 
     <form id="designer-form">
-        <label for="designer-input">Look for a Designers:</label>
-        <input type="text" id="designer-input">
+        <label for="designer-input" class="search">Look for Designers:</label>
+        <input type="text" id="designer-input" class="search-field"> 
         <br>
-        <input id="add-designer" type="submit" value="Add Designer!">
+        <input id="add-designer" type="submit" value="Add Designer!" class="search"> 
     </form>
     
 
